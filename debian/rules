@@ -1,0 +1,12 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+l10npkgs_firstversion_ok := 4:17.08.3-4~
+include /usr/share/pkg-kde-tools/qt-kde-team/2/l10n-packages.mk
+
+%:
+	dh $@ --with kf5
+
+override_dh_gencontrol: l10npkgs_firstversion_ok
+	dh_gencontrol
